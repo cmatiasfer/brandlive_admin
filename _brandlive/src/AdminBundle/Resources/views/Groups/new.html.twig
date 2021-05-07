@@ -1,0 +1,46 @@
+{% extends '@admin_views/base.html.twig' %}
+
+{% block title %} BrandLive | Nuevo{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('admin_bundle/css/skin-black.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin_bundle/css/dataTables.bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin_bundle/css/panel.css') }}">
+{% endblock %}
+
+{% block bodyClass %}hold-transition skin-black sidebar-mini{% endblock %}
+{% block mainDivClass %}wrapper{% endblock %}
+
+{% block body %}
+    <div class="content-wrapper">
+
+        <section class="content-header">
+            <h1>
+                Admin
+                <small>Grupos</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="{{ path('groups_new') }}"><i class="fa fa-dashboard"></i> Grupos</a></li>
+                <li class="active">Nuevo</li>
+            </ol>
+        </section>
+        <section class="content">
+            <div class="box box-success">
+                <div class="box-header with-border">
+                    {{ include('@admin_views/Components/form.html.twig') }}
+                    {# Actions #}
+                    <a href="{{ path('groups_list') }}" class="btn btn-default pull-right"><i class="fa fa-chevron-left"></i> back</a>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}
+
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('admin_bundle/js/adminlte.min.js') }}"></script>
+    <script src="{{ asset('admin_bundle/js/demo.js') }}"></script>
+    <script src="{{ asset('admin_bundle/js/form.js') }}"></script>
+{% endblock %}

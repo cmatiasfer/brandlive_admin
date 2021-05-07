@@ -1,0 +1,78 @@
+{% extends '@admin_views/base.html.twig' %}
+
+{% block title %} BrandLive | Lista de Grupos{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('admin_bundle/css/skin-black.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin_bundle/css/dataTables.bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin_bundle/css/panel.css') }}">
+{% endblock %}
+
+{% block bodyClass %}hold-transition skin-black sidebar-mini{% endblock %}
+{% block mainDivClass %}wrapper{% endblock %}
+
+{% block body %}
+
+<div class="content-wrapper">
+    <div class="container-info-selected">
+        <div class="actions">
+            <span class="remove-items"><i class="fa fa-trash"></i></span>
+        </div>
+        <div class="data"> 
+            <p><span class="count">0</span> Seleccionados</p>
+        </div>
+    </div>
+
+    <section class="content-header">
+        <h1> Administrar <small>Grupos</small> </h1>
+        <ol class="breadcrumb">
+            <li><i class="fa fa-shield"></i> Administrar</li>
+            <li class="active">Grupos</li>
+        </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content content-table">
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success " style="display:none">
+                {{ message }}
+            </div>
+        {% endfor %}
+        <div class="box">
+            <div class="box-header"> <h3 class="box-title">Grupos</h3> </div>
+            
+            <div class="box-body">
+                <table id="indexlist" class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+                        {% for group in groups %}
+                            <tr>
+                                <td>{{group.name}}</td>  
+                                <td>{{ include('@admin_views/Components/buttons.html.twig',{'id': group.id, 'section': 'groups'}) }}</td> 
+                            </tr>
+                        {% else %}
+                            <tr> <td colspan="6">No hay registros.</td> </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <a href="{{ path('groups_new') }}" class="btn bg-olive"><i class="fa fa-plus-circle"></i> añadir</a>
+            </div>
+        </div>
+    </section>
+</div>
+
+{% endblock %}
+
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('admin_bundle/js/adminlte.min.js') }}"></script>
+    <script src="{{ asset('admin_bundle/js/demo.js') }}"></script>
+{% endblock %}

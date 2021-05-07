@@ -1,0 +1,29 @@
+{% extends '@admin_views/base.html.twig' %}
+
+{% block title %} BrandLive | Home{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('admin_bundle/css/login.css') }}">
+{% endblock %}
+
+{% block bodyClass %}hold-transition login-page{% endblock %}
+{% block mainDivClass %}login-wrapper{% endblock %}
+{% block header %}{% endblock %}
+{% block sidebar %}{% endblock %}
+
+{% block body %}
+    <div class="login-box">
+        <div class="login-logo">
+            <a href="{{path('home')}}"><b>BrandLive</b></a>
+        </div>
+        <div class="box-body">
+            <a href="{{path('clients_list')}}" class="btn btn-default">Ingresar a Admin</a>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}

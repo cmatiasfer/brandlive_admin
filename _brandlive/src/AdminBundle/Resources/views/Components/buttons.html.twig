@@ -1,0 +1,14 @@
+{% set dataRow = {'id': id} %}
+
+{# EDIT #}
+<a href="{{ path(section ~ '_edit', dataRow) }}" class="btn bg-orange" >
+    <i class="fa fa-edit"></i>
+    <span class="hidden-xs hidden-sm">editar</span>
+</a>
+{% set url_delete = path(section ~ '_delete', dataRow) %}
+{# REMOVE #}
+<form method="post" action="{{url_delete}}" onsubmit="return confirm('¿Estas seguro que deseas eliminar este elemento?');" class="form_delete">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ id) }}">
+    <button class="btn btn-danger" style="margin-left:5px;"><i class="fa fa-trash"></i> <span class="hidden-xs hidden-sm"> borrar</span></button>
+</form>

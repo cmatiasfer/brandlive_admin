@@ -1,0 +1,41 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{% block title %}{% endblock %}</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('admin_bundle/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('admin_bundle/css/font-awesome.css') }}">
+        <link rel="stylesheet" href="{{ asset('admin_bundle/css/AdminLTE.min.css') }}">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+        <style>
+            .searchbar form > div > label{
+                display:none;
+            }
+            .box-header form > div > label{
+                display:none;
+            }
+        </style>
+    {% endblock %}
+</head>
+
+<body class="{% block bodyClass %}{% endblock %}">
+    <div class="{% block mainDivClass %}{% endblock %}">
+        {% block header %}
+            {{ include('@admin_views/Panel/header.html.twig') }}
+        {% endblock %}
+
+        {% block sidebar %}
+            {{ include('@admin_views/Panel/sidebar.html.twig') }}
+        {% endblock %}
+
+        {% block body %}{% endblock %}
+    
+    </div>
+    {% block javascripts %}
+        <script src="{{ asset('admin_bundle/js/jquery.min.js') }}"></script>
+        <script src="{{ asset('admin_bundle//js/bootstrap.min.js') }}"></script>
+    {% endblock %}
+</body>
+</html>
